@@ -18,8 +18,7 @@ services:
             - "www.bauservices.test:127.0.0.1"
             - "bauservices.test:127.0.0.1"
     php:
-        build: ./php # it specifies the path of Dockerfile (need to run docker-compose build)
-        image: php:7.2.14-fpm
+        build: ./php # it specifies the path of Dockerfile (need to run docker-compose build). No need to add image tag
         restart: always
         working_dir: /usr/share/www/html
         volumes:
