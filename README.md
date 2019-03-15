@@ -8,7 +8,7 @@ File: .env
 - MYSQL_ROOT_PASSWORD=secret
 
 Folder: db
-- Can include a dump.sql file which will be imported when docjer-compose up -d
+- Can include a dump.sql file which will be imported when docker-compose up -d
 
 Folder: db -> persist
 - It keeps the database so that if docker-compose build the database will not be lost
