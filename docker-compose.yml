@@ -23,6 +23,7 @@ services:
         working_dir: /usr/share/www/html
         volumes:
             - ./www:/usr/share/www/html:delegated
+            - ./php/php.ini:/usr/local/etc/php/php.ini:delegated
         links:
             - db
     db:
