@@ -47,6 +47,11 @@ services:
             PMA_HOST: db
         depends_on:
             - db
+    redis:
+        image: redis:4.0-alpine
+        restart: always
+        volumes:
+            - ./redis_data:/data
 networks:
     app_net:
         driver: bridge
