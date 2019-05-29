@@ -60,7 +60,7 @@ services:
         environment:
             - NGROK_AUTH=7DNADFfe73E8VNhAqVikG_4MiCAurNQpL8EQquD2kCh
             - NGROK_PORT=nginx:80
-            - NGROK_REGION=eu
+            - NGROK_REGION=${NGROK_REGION}
 networks:
     app_net:
         driver: bridge
