@@ -6,6 +6,7 @@ File: .env
 - MYSQL_USER=secret
 - MYSQL_PASSWORD=secret
 - MYSQL_ROOT_PASSWORD=secret
+- NGROK_REGION=eu
 
 Folder: db
 - Can include a dump.sql file which will be imported when docker-compose up -d
