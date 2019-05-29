@@ -5,8 +5,8 @@ services:
         image: nginx:alpine
         volumes:
             - ./www:/usr/share/www/html:delegated # declare that the host's www folder contents will mount the html folder of container
-            - ./nginx/server.conf:/etc/nginx/conf.d/default.conf # copy an nginx configuration to server container and replace the default 
-        ports: 
+            - ./nginx/server.conf:/etc/nginx/conf.d/default.conf # copy an nginx configuration to server container and replace the default
+        ports:
             - 8000:80
         links:
             - php
@@ -53,6 +53,14 @@ services:
         restart: always
         volumes:
             - ./redis_data:/data
+    ngrok:
+        image: wernight/ngrok:latest
+        links:
+            - nginx
+        environment:
+            - NGROK_AUTH=7DNADFfe73E8VNhAqVikG_4MiCAurNQpL8EQquD2kCh
+            - NGROK_PORT=nginx:80
+            - NGROK_REGION=eu
 networks:
     app_net:
         driver: bridge
