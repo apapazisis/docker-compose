@@ -24,8 +24,6 @@ RUN docker-php-ext-install -j$(nproc) \
     tokenizer \
     calendar \
     soap
-    
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN apt-get install -y \
     libxrender1 \
@@ -35,9 +33,15 @@ RUN apt-get install -y \
     libxtst6 \
     libssl1.0-dev 
     
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
 RUN apt-get install -y nodejs
 
 ENV WKHTML2PDF_VERSION 0.12.5
 RUN wget "https://downloads.wkhtmltopdf.org/0.12/${WKHTML2PDF_VERSION}/wkhtmltox_${WKHTML2PDF_VERSION}-1.stretch_amd64.deb" \
 && apt-get install -y ./wkhtmltox_${WKHTML2PDF_VERSION}-1.stretch_amd64.deb 
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN composer config --global repo.packagist composer https://packagist.org
+RUN composer global require laravel/installer
+ENV PATH="$PATH:/root/.composer/vendor/bin"
