@@ -7,7 +7,12 @@ RUN apt-get update && apt-get install -y zlib1g-dev \
     vim \
     wget \
     curl \
-    gnupg
+    gnupg \
+    libxrender1 \
+    libfontconfig1 \
+    libx11-dev \
+    libjpeg62 \
+    libxtst6 
     
 RUN docker-php-ext-install -j$(nproc) \
     mysqli \
@@ -24,14 +29,6 @@ RUN docker-php-ext-install -j$(nproc) \
     tokenizer \
     calendar \
     soap
-
-RUN apt-get install -y \
-    libxrender1 \
-    libfontconfig1 \
-    libx11-dev \
-    libjpeg62 \
-    libxtst6 \
-    libssl1.0-dev 
     
 RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
 RUN apt-get install -y nodejs
