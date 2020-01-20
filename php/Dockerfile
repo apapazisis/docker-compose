@@ -28,7 +28,8 @@ RUN docker-php-ext-install -j$(nproc) \
     json \
     tokenizer \
     calendar \
-    soap
+    soap \
+    intl
     
 RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
 RUN apt-get install -y nodejs
