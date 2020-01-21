@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y zlib1g-dev \
     libfontconfig1 \
     libx11-dev \
     libjpeg62 \
-    libxtst6 
+    libxtst6 \
+    supervisor
     
 RUN docker-php-ext-install -j$(nproc) \
     mysqli \
