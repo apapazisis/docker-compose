@@ -40,7 +40,6 @@ RUN wget "https://downloads.wkhtmltopdf.org/0.12/${WKHTML2PDF_VERSION}/wkhtmltox
 && apt-get install -y ./wkhtmltox_${WKHTML2PDF_VERSION}-1.stretch_amd64.deb 
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
 RUN composer config --global repo.packagist composer https://packagist.org
 ENV PATH="$PATH:/root/.composer/vendor/bin"
 
