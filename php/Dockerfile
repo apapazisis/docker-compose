@@ -42,8 +42,9 @@ RUN wget "https://downloads.wkhtmltopdf.org/0.12/${WKHTML2PDF_VERSION}/wkhtmltox
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN composer config --global repo.packagist composer https://packagist.org
-RUN composer global require laravel/installer
 ENV PATH="$PATH:/root/.composer/vendor/bin"
+
+RUN composer global require laravel/installer
 
 COPY laravel-worker.conf /etc/supervisor/conf.d
 CMD supervisord -c /etc/supervisor/conf.d/laravel-worker.conf
