@@ -44,3 +44,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer config --global repo.packagist composer https://packagist.org
 RUN composer global require laravel/installer
 ENV PATH="$PATH:/root/.composer/vendor/bin"
+
+COPY laravel-worker.conf /etc/supervisor/conf.d
+CMD supervisord -c /etc/supervisor/conf.d/laravel-worker.conf
