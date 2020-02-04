@@ -6,6 +6,7 @@ File: .env
 - MYSQL_USER=secret
 - MYSQL_PASSWORD=secret
 - MYSQL_ROOT_PASSWORD=secret
+- MYSQL_ALLOW_EMPTY_PASSWORD=yes
 - NGROK_REGION=eu
 
 Folder: db
