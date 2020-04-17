@@ -1,4 +1,4 @@
-FROM php:7.2.14-fpm
+FROM php:7.4.4-fpm
 
 RUN apt-get update && apt-get install -y zlib1g-dev \
     libpng-dev \
@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y zlib1g-dev \
     wget \
     curl \
     gnupg \
+    libonig-dev \
+    libzip-dev \
     libxrender1 \
     libfontconfig1 \
     libx11-dev \
