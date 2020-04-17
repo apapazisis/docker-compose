@@ -17,3 +17,5 @@ Folder: db -> persist
 
 Folder: www
 - Where the project is.
+
+If the db folder already exists delete him and build and up -d your containers
