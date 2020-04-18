@@ -57,6 +57,8 @@ services:
     redis:
         image: redis:4.0-alpine
         restart: always
+        networks:
+            - server_net
         volumes:
             - ./redis_data:/data
     ngrok:
