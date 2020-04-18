@@ -37,6 +37,8 @@ RUN docker-php-ext-install -j$(nproc) \
 RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
 RUN apt-get install -y nodejs
 
+RUN pecl install redis && docker-php-ext-enable redis
+
 ENV WKHTML2PDF_VERSION 0.12.5
 RUN wget "https://downloads.wkhtmltopdf.org/0.12/${WKHTML2PDF_VERSION}/wkhtmltox_${WKHTML2PDF_VERSION}-1.stretch_amd64.deb" \
 && apt-get install -y ./wkhtmltox_${WKHTML2PDF_VERSION}-1.stretch_amd64.deb 
