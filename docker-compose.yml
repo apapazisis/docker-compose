@@ -54,6 +54,18 @@ services:
             PMA_HOST: db
         depends_on:
             - db
+    elasticsearch:
+        image: elasticsearch:7.6.2
+        restart: always
+        environment:
+            - discovery.type=single-node
+            - bootstrap.memory_lock=true
+        networks:
+            - server_net
+        ports:
+            - 9200:9200
+        volumes:
+            - ./elasticsearch/data:/usr/share/elasticsearch/data
     redis:
         image: redis:4.0-alpine
         restart: always
