@@ -54,18 +54,42 @@ services:
             PMA_HOST: db
         depends_on:
             - db
-    elasticsearch:
+      es01:
         image: elasticsearch:7.6.2
-        restart: always
         environment:
-            - discovery.type=single-node
+            - node.name=es01
+            - discovery.seed_hosts=es02
+            - cluster.initial_master_nodes=es01,es02
+            - cluster.name=es-docker-cluster
             - bootstrap.memory_lock=true
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
         networks:
             - server_net
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
         ports:
             - 9200:9200
         volumes:
-            - ./elasticsearch/data:/usr/share/elasticsearch/data
+            - ./elasticsearch/es01/data:/usr/share/elasticsearch/data
+    es02:
+        image: elasticsearch:7.6.2
+        environment:
+            - node.name=es02
+            - discovery.seed_hosts=es01
+            - cluster.initial_master_nodes=es01,es02
+            - cluster.name=es-docker-cluster
+            - bootstrap.memory_lock=true
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        networks:
+            - server_net
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+        volumes:
+            - ./elasticsearch/es02/data:/usr/share/elasticsearch/data
     redis:
         image: redis:4.0-alpine
         restart: always
