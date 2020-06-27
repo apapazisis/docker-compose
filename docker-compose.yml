@@ -55,7 +55,7 @@ services:
         depends_on:
             - db
       es01:
-        image: elasticsearch:7.6.2
+        image: elasticsearch:7.8.0
         environment:
             - node.name=es01
             - discovery.seed_hosts=es02
@@ -74,7 +74,7 @@ services:
         volumes:
             - ./elasticsearch/es01/data:/usr/share/elasticsearch/data
     es02:
-        image: elasticsearch:7.6.2
+        image: elasticsearch:7.8.0
         environment:
             - node.name=es02
             - discovery.seed_hosts=es01
@@ -90,6 +90,18 @@ services:
                 hard: -1
         volumes:
             - ./elasticsearch/es02/data:/usr/share/elasticsearch/data
+    kibana:
+        image: kibana:7.8.0
+        ports:
+            - "5601:5601"
+        environment:
+            SERVER_NAME: kibana.example.org
+            ELASTICSEARCH_HOSTS: http://es01:9200
+        depends_on:
+          - es01
+          - es02
+        networks:
+            - server_net
     redis:
         image: redis:4.0-alpine
         restart: always
