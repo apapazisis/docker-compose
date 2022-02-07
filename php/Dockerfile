@@ -45,7 +45,7 @@ RUN wget "https://downloads.wkhtmltopdf.org/0.12/${WKHTML2PDF_VERSION}/wkhtmltox
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer config --global repo.packagist composer https://packagist.org
-ENV PATH="$PATH:/root/.composer/vendor/bin"
+ENV PATH="$PATH:/root/.config/composer/vendor/bin"
 
 RUN composer global require laravel/installer
 
