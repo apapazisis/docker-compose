@@ -19,3 +19,9 @@ Folder: www
 - Where the project is.
 
 If the db folder already exists delete him and build and up -d your containers
+
+
+# Remove Volumes 
+- docker stop $(docker ps -aq)
+- docker rm $(docker ps -aq)
+- docker volume rm <volume>
